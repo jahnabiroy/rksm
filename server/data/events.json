@@ -1,0 +1,14 @@
+[
+  {
+    "id": "EVT-2026-1774555786820",
+    "title": "Upcoming Retreat",
+    "description": "Join us for a retreat at the Delhi centre.",
+    "location": "Delhi",
+    "startDate": "2026-04-25",
+    "endDate": "2026-04-26",
+    "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdjSzrS6toRaAueONe2CampPPZDSijDIaB9N7IO-Ld3cYkkTg/viewform",
+    "registrationsSheetUrl": "https://docs.google.com/spreadsheets/d/1ejx1qtBcTXsfFkaJMqaXYPVW-w5IXLPDbQCMGUTZx1E/edit?resourcekey=&gid=1365388977#gid=1365388977",
+    "createdAt": "2026-03-26T20:09:46.820Z",
+    "status": "Upcoming"
+  }
+]
