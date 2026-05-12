@@ -30,24 +30,150 @@ A React + Vite donation platform with an Express backend. It now includes:
 - Excel import and export
 - Year-wise workbook storage in `server/data`
 
-## Run locally
+## Run locally on Windows
 
-```bash
+These steps are for a fresh Windows computer that does not already have Node, npm, React, Vite, or Express installed.
+
+You do not need to install React separately. React and all other project libraries are installed by `npm install` from `package.json`.
+
+### 1. Install Node.js and npm
+
+1. Go to `https://nodejs.org/`
+2. Download the Windows LTS installer.
+3. Run the installer and keep the default options. If it asks about adding Node to `PATH`, allow it.
+4. Close and reopen PowerShell or Command Prompt.
+5. Check that Node and npm are available:
+
+```powershell
+node -v
+npm -v
+```
+
+Both commands should print version numbers. If Windows says `node` or `npm` is not recognized, restart the computer and try again. If it still fails, reinstall Node.js and make sure it is added to `PATH`.
+
+### 2. Get the project files
+
+If Git is not installed, use the ZIP download:
+
+1. Open `https://github.com/jahnabiroy/rksm`
+2. Click `Code`
+3. Click `Download ZIP`
+4. Extract the ZIP file
+5. Open PowerShell or Command Prompt inside the extracted folder
+
+If Git is installed, you can clone instead:
+
+```powershell
+git clone https://github.com/jahnabiroy/rksm.git
+cd rksm
+```
+
+If the folder path has spaces, wrap it in quotes:
+
+```powershell
+cd "C:\Users\YourName\Downloads\rksm-main"
+```
+
+### 3. Install the project libraries
+
+Run this inside the project folder:
+
+```powershell
 npm install
+```
+
+This downloads React, Vite, Express, and the other dependencies into a local `node_modules` folder. The `node_modules` folder is intentionally not stored in GitHub.
+
+### 4. Create the local settings file
+
+The app reads private/local settings from `.env`. This file is not uploaded to GitHub.
+
+For basic local testing, create a `.env` file with these values:
+
+```env
+PORT=3001
+APP_BASE_URL=http://localhost:5173
+ADMIN_PORTAL_PASSWORD=choose-a-password-here
+```
+
+PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+```
+
+Command Prompt:
+
+```cmd
+copy .env.example .env
+notepad .env
+```
+
+At minimum, set `ADMIN_PORTAL_PASSWORD` to the password you want to use for the admin page.
+
+If you do not want email sending yet, leave the SMTP fields blank or remove the SMTP lines from `.env`. If fake SMTP values are left in place, the app may try to send email and show email-related errors in the terminal.
+
+### 5. Start the app for development
+
+Run:
+
+```powershell
 npm run dev
 ```
 
-Open:
+Keep this terminal open while using the app. Open these URLs in a browser:
 
 - `http://localhost:5173/` for the public website
 - `http://localhost:5173/admin` for the admin side
 
-## Production build
+The backend API runs on `http://localhost:3001`. The frontend runs on `http://localhost:5173`.
 
-```bash
+To stop the app, click the terminal and press `Ctrl + C`.
+
+### 6. Run a production-style build locally
+
+Use this when you want to test the built app instead of the development server:
+
+```powershell
 npm run build
 npm start
 ```
+
+Then open:
+
+- `http://localhost:3001/`
+- `http://localhost:3001/admin`
+
+## Common Windows problems
+
+### `npm` is not recognized
+
+Node.js is not installed correctly, or PowerShell/CMD was opened before installation finished. Close the terminal and open it again. If that does not work, reinstall Node.js from `https://nodejs.org/`.
+
+### PowerShell script execution error
+
+If PowerShell blocks npm scripts, run the commands in Command Prompt instead:
+
+```cmd
+npm install
+npm run dev
+```
+
+You can also use PowerShell with:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+### Port already in use
+
+If `3001` or `5173` is already being used, close the other app or terminal that is using it. You can also change `PORT=3001` in `.env` for the backend port.
+
+### Windows Defender or firewall prompt
+
+If Windows asks whether to allow Node.js access, allow it on private networks so the local development server can run.
 
 ## Data model notes
 
